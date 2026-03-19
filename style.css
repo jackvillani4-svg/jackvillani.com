@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital@0;1&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text-primary: #1a1a1a;
+  --text-secondary: #666;
+  --text-tertiary: #999;
+  --border: #e0e0e0;
+  --bg: #fafaf8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'Courier Prime', monospace;
+}
+body {
+  font-family: var(--serif);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.site-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+nav {
+  display: flex;
+  gap: 1.75rem;
+  margin-bottom: 5rem;
+  flex-wrap: wrap;
+}
+nav a {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--text-primary); }
+nav a.active { color: var(--text-primary); border-bottom: 0.5px solid var(--text-primary); padding-bottom: 1px; }
+.page-body {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeUp 0.6s ease 0.05s forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+footer a {
+  color: var(--text-tertiary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer a:hover { color: var(--text-secondary); }
+
+/* Play list */
+.play-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.play-list li {
+  border-bottom: 0.5px solid var(--border);
+}
+.play-list li:last-child {
+  border-bottom: none;
+}
+.play-list a {
+  display: block;
+  padding: 0.75rem 0;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.play-list a:hover {
+  color: var(--text-secondary);
+}
+
+/* Japanese hover effect */
+.jp-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.jp-label,
+.jp-hover {
+  display: block;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.jp-hover {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.jp-link:hover .jp-label {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.jp-link:hover .jp-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Favorites / lists shared styles */
+.search-input {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  border-bottom: 0.5px solid var(--border);
+  padding: 6px 0;
+  margin-bottom: 0.75rem;
+  outline: none;
+}
+.search-input::placeholder { color: var(--text-tertiary); }
+.search-input:focus { border-bottom-color: var(--text-secondary); }
+.filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 1.25rem 0 1rem;
+}
+.filter-btn {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: none;
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover, .filter-btn.active {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  background: #f0ede6;
+}
+.item-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+}
+.item-list { list-style: none; }
+.item-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.item-row:last-child { border-bottom: none; }
+.item-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  min-width: 20px;
+  text-align: right;
+}
+.item-title {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  flex: 1;
+}
+.item-sub {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Few of My Favorite Things — Jack Villani</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tabs {
+      display: flex;
+      gap: 2rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 0;
+    }
+
+    .tab-btn {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      background: none;
+      border: none;
+      border-bottom: 1.5px solid transparent;
+      padding: 0 0 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-bottom: -0.5px;
+    }
+
+    .tab-btn:hover { color: var(--text-secondary); }
+    .tab-btn.active { color: var(--text-primary); border-bottom-color: var(--text-primary); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+    <nav>
+      <a href="index.html">About</a>
+      <a href="play.html">Play</a>
+      <a href="writing.html">Writing</a>
+      <a href="favorites.html" class="active">A Few of My Favorite Things</a>
+    </nav>
+
+    <div class="page-body">
+      <div class="tabs">
+        <button class="tab-btn active" data-panel="books">Books</button>
+        <button class="tab-btn" data-panel="movies">Movies</button>
+      </div>
+
+      <!-- Books -->
+      <div class="tab-panel active" id="panel-books">
+        <input class="search-input" type="text" placeholder="Search books..." id="book-search" />
+        <div class="filters">
+          <button class="filter-btn active" data-tag="all">All</button>
+          <button class="filter-btn" data-tag="spirituality">Spirituality</button>
+          <button class="filter-btn" data-tag="science">Science</button>
+          <button class="filter-btn" data-tag="fiction">Fiction</button>
+          <button class="filter-btn" data-tag="self">Self</button>
+          <button class="filter-btn" data-tag="business">Business</button>
+          <button class="filter-btn" data-tag="travel">Travel</button>
+          <button class="filter-btn" data-tag="food">Food</button>
+        </div>
+        <div class="item-count" id="book-count"></div>
+        <ul class="item-list" id="book-list"></ul>
+      </div>
+
+      <!-- Movies -->
+      <div class="tab-panel" id="panel-movies">
+        <input class="search-input" type="text" placeholder="Search movies..." id="movie-search" />
+        <div class="filters">
+          <button class="filter-btn active" data-tag="all">All</button>
+          <button class="filter-btn" data-tag="action">Action</button>
+          <button class="filter-btn" data-tag="comedy">Comedy</button>
+          <button class="filter-btn" data-tag="drama">Drama</button>
+          <button class="filter-btn" data-tag="romance">Romance</button>
+          <button class="filter-btn" data-tag="scifi">Sci-fi</button>
+          <button class="filter-btn" data-tag="documentary">Documentary</button>
+          <button class="filter-btn" data-tag="foreign">Foreign</button>
+        </div>
+        <div class="item-count" id="movie-count"></div>
+        <ul class="item-list" id="movie-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const books = [
+      { title: "The Name of the Wind", author: "Patrick Rothfuss", tags: ["fiction"] },
+      { title: "East of Eden", author: "John Steinbeck", tags: ["fiction"] },
+      { title: "Four Thousand Weeks", author: "Oliver Burkeman", tags: ["self"] },
+      { title: "Start Where You Are", author: "Pema Chödrön", tags: ["spirituality"] },
+      { title: "Not Fade Away", author: "Laurence Shames & Peter Barton", tags: ["self"] },
+      { title: "Siddhartha", author: "Hermann Hesse", tags: ["spirituality", "fiction"] },
+      { title: "The 4-Hour Work Week", author: "Tim Ferriss", tags: ["business", "self"] },
+      { title: "The Wisdom of Insecurity", author: "Alan Watts", tags: ["spirituality"] },
+      { title: "The Lion Tracker's Guide to Life", author: "Boyd Varty", tags: ["self", "travel"] },
+      { title: "Awareness", author: "Anthony De Mello", tags: ["spirituality"] },
+      { title: "On Having No Head", author: "Douglas Harding", tags: ["spirituality"] },
+      { title: "Jed Talks #1", author: "Jed McKenna", tags: ["spirituality"] },
+      { title: "Jed Talks #2", author: "Jed McKenna", tags: ["spirituality"] },
+      { title: "Jed Talks #3", author: "Jed McKenna", tags: ["spirituality"] },
+      { title: "Spiritual Enlightenment", author: "Jed McKenna", tags: ["spirituality"] },
+      { title: "Spiritually Incorrect Enlightenment", author: "Jed McKenna", tags: ["spirituality"] },
+      { title: "Spiritual Warfare", author: "Jed McKenna", tags: ["spirituality"] },
+      { title: "Eat Pray Love", author: "Elizabeth Gilbert", tags: ["travel", "self"] },
+      { title: "Moonwalking with Einstein", author: "Joshua Foer", tags: ["science"] },
+      { title: "Outliers", author: "Malcolm Gladwell", tags: ["science"] },
+      { title: "The Tipping Point", author: "Malcolm Gladwell", tags: ["science"] },
+      { title: "Blink", author: "Malcolm Gladwell", tags: ["science"] },
+      { title: "David and Goliath", author: "Malcolm Gladwell", tags: ["science"] },
+      { title: "Talking to Strangers", author: "Malcolm Gladwell", tags: ["science"] },
+      { title: "Revenge of the Tipping Point", author: "Malcolm Gladwell", tags: ["science"] },
+      { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", tags: ["science"] },
+      { title: "Sex, Drugs, and Cocoa Puffs", author: "Chuck Klosterman", tags: ["self"] },
+      { title: "Finite and Infinite Games", author: "James Carse", tags: ["spirituality"] },
+      { title: "How to Change Your Mind", author: "Michael Pollan", tags: ["science", "spirituality"] },
+      { title: "Setting the Table", author: "Danny Meyer", tags: ["business", "food"] },
+      { title: "Be Our Guest", author: "The Disney Institute", tags: ["business"] },
+      { title: "Caffeine", author: "Michael Pollan", tags: ["science", "food"] },
+      { title: "The Unbearable Lightness of Being", author: "Milan Kundera", tags: ["fiction"] },
+      { title: "A Short History of Nearly Everything", author: "Bill Bryson", tags: ["science"] },
+      { title: "At Home", author: "Bill Bryson", tags: ["science"] },
+      { title: "The Body", author: "Bill Bryson", tags: ["science"] },
+      { title: "Surely You're Joking, Mr. Feynman!", author: "Richard P. Feynman", tags: ["science"] },
+      { title: "Lonesome Dove", author: "Larry McMurtry", tags: ["fiction"] },
+      { title: "Ender's Game", author: "Orson Scott Card", tags: ["fiction"] },
+      { title: "Ready Player One", author: "Ernest Cline", tags: ["fiction"] },
+      { title: "Neuromancer", author: "William Gibson", tags: ["fiction"] },
+      { title: "Snow Crash", author: "Neal Stephenson", tags: ["fiction"] },
+      { title: "Kitchen Confidential", author: "Anthony Bourdain", tags: ["food", "travel"] },
+      { title: "Vagabonding", author: "Rolf Potts", tags: ["travel"] },
+      { title: "Win Bigly", author: "Scott Adams", tags: ["business"] },
+      { title: "How to Fail at Almost Everything and Still Win Big", author: "Scott Adams", tags: ["business", "self"] },
+      { title: "The Subtle Art of Not Giving a F*ck", author: "Mark Manson", tags: ["self"] },
+      { title: "The Defining Decade", author: "Meg Jay", tags: ["self"] },
+      { title: "No Bad Parts", author: "Richard C. Schwartz", tags: ["self", "spirituality"] },
+      { title: "Harry Potter and the Philosopher's Stone", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Harry Potter and the Chamber of Secrets", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Harry Potter and the Prisoner of Azkaban", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Harry Potter and the Goblet of Fire", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Harry Potter and the Order of the Phoenix", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Harry Potter and the Half-Blood Prince", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Harry Potter and the Deathly Hallows", author: "J.K. Rowling", tags: ["fiction"] },
+      { title: "Waking Up", author: "Sam Harris", tags: ["spirituality"] },
+    ];
+
+    const movies = [
+      { title: "American Hustle", director: "David O. Russell", tags: ["drama"] },
+      { title: "Barton Fink", director: "Joel Coen", tags: ["drama"] },
+      { title: "A Charlie Brown Christmas", director: "Bill Melendez", tags: ["comedy"] },
+      { title: "Battle Royale", director: "Kinji Fukasaku", tags: ["action", "foreign"] },
+      { title: "Before Sunrise", director: "Richard Linklater", tags: ["romance", "drama"] },
+      { title: "The Big Lebowski", director: "Joel & Ethan Coen", tags: ["comedy"] },
+      { title: "The Big Short", director: "Adam McKay", tags: ["drama"] },
+      { title: "Birdman", director: "Alejandro G. Iñárritu", tags: ["drama"] },
+      { title: "Blue Giant", director: "Yuzuru Tachikawa", tags: ["drama", "foreign"] },
+      { title: "Blue Is the Warmest Color", director: "Abdellatif Kechiche", tags: ["romance", "foreign"] },
+      { title: "Boogie Nights", director: "Paul Thomas Anderson", tags: ["drama"] },
+      { title: "The Bourne Identity", director: "Doug Liman", tags: ["action"] },
+      { title: "Branded to Kill", director: "Seijun Suzuki", tags: ["action", "foreign"] },
+      { title: "Breathless", director: "Jean-Luc Godard", tags: ["foreign", "drama"] },
+      { title: "Bridget Jones's Diary", director: "Sharon Maguire", tags: ["romance", "comedy"] },
+      { title: "The Brothers Bloom", director: "Rian Johnson", tags: ["comedy", "drama"] },
+      { title: "Buena Vista Social Club", director: "Wim Wenders", tags: ["documentary"] },
+      { title: "Call Me by Your Name", director: "Luca Guadagnino", tags: ["romance", "drama"] },
+      { title: "Casino Royale", director: "Martin Campbell", tags: ["action"] },
+      { title: "Catch Me If You Can", director: "Steven Spielberg", tags: ["drama"] },
+      { title: "Cool Runnings", director: "Jon Turteltaub", tags: ["comedy"] },
+      { title: "Dallas Buyers Club", director: "Jean-Marc Vallée", tags: ["drama"] },
+      { title: "The Departed", director: "Martin Scorsese", tags: ["action", "drama"] },
+      { title: "The Devil Wears Prada", director: "David Frankel", tags: ["comedy", "drama"] },
+      { title: "Eat Pray Love", director: "Ryan Murphy", tags: ["drama", "romance"] },
+      { title: "Everything Everywhere All at Once", director: "Daniel Kwan & Daniel Scheinert", tags: ["scifi", "drama"] },
+      { title: "Fantastic Mr. Fox", director: "Wes Anderson", tags: ["comedy"] },
+      { title: "Fargo", director: "Joel & Ethan Coen", tags: ["drama"] },
+      { title: "The Fast and the Furious", director: "Rob Cohen", tags: ["action"] },
+      { title: "2 Fast 2 Furious", director: "John Singleton", tags: ["action"] },
+      { title: "Tokyo Drift", director: "Justin Lin", tags: ["action"] },
+      { title: "A Few Good Men", director: "Rob Reiner", tags: ["drama"] },
+      { title: "Fire of Love", director: "Sara Dosa", tags: ["documentary"] },
+      { title: "A Fistful of Dollars", director: "Sergio Leone", tags: ["action", "foreign"] },
+      { title: "Ford v Ferrari", director: "James Mangold", tags: ["drama", "action"] },
+      { title: "Forgetting Sarah Marshall", director: "Nicholas Stoller", tags: ["comedy", "romance"] },
+      { title: "The Gentlemen", director: "Guy Ritchie", tags: ["action", "comedy"] },
+      { title: "Gladiator", director: "Ridley Scott", tags: ["action", "drama"] },
+      { title: "Guardians of the Galaxy", director: "James Gunn", tags: ["action", "scifi"] },
+      { title: "The Covenant", director: "Guy Ritchie", tags: ["action"] },
+      { title: "Hana-bi", director: "Takeshi Kitano", tags: ["drama", "foreign"] },
+      { title: "The Hangover", director: "Todd Phillips", tags: ["comedy"] },
+      { title: "Harry Potter series", director: "Various", tags: ["drama"] },
+      { title: "High Fidelity", director: "Stephen Frears", tags: ["comedy", "romance"] },
+      { title: "Horrible Bosses", director: "Seth Gordon", tags: ["comedy"] },
+      { title: "How to Lose a Guy in 10 Days", director: "Donald Petrie", tags: ["comedy", "romance"] },
+      { title: "In Bruges", director: "Martin McDonagh", tags: ["comedy", "drama"] },
+      { title: "Inglourious Basterds", director: "Quentin Tarantino", tags: ["action", "drama"] },
+      { title: "Inherent Vice", director: "Paul Thomas Anderson", tags: ["drama"] },
+      { title: "Interstellar", director: "Christopher Nolan", tags: ["scifi", "drama"] },
+      { title: "The Italian Job", director: "F. Gary Gray", tags: ["action"] },
+      { title: "Jerry Maguire", director: "Cameron Crowe", tags: ["drama", "romance"] },
+      { title: "John Wick", director: "Chad Stahelski", tags: ["action"] },
+      { title: "John Wick: Chapter 2", director: "Chad Stahelski", tags: ["action"] },
+      { title: "John Wick: Chapter 3", director: "Chad Stahelski", tags: ["action"] },
+      { title: "John Wick: Chapter 4", director: "Chad Stahelski", tags: ["action"] },
+      { title: "Kill Bill: Volume 1", director: "Quentin Tarantino", tags: ["action"] },
+      { title: "Kill Bill: Volume 2", director: "Quentin Tarantino", tags: ["action"] },
+      { title: "Knives Out", director: "Rian Johnson", tags: ["comedy", "drama"] },
+      { title: "La La Land", director: "Damien Chazelle", tags: ["romance", "drama"] },
+      { title: "The Last Samurai", director: "Edward Zwick", tags: ["action", "drama"] },
+      { title: "Edge of Tomorrow", director: "Doug Liman", tags: ["action", "scifi"] },
+      { title: "The Lord of the Rings trilogy", director: "Peter Jackson", tags: ["action", "drama"] },
+      { title: "Lost in Translation", director: "Sofia Coppola", tags: ["drama", "romance"] },
+      { title: "Love & Other Drugs", director: "Edward Zwick", tags: ["romance", "drama"] },
+      { title: "Love Actually", director: "Richard Curtis", tags: ["romance", "comedy"] },
+      { title: "Lucky Number Slevin", director: "Paul McGuigan", tags: ["action", "drama"] },
+      { title: "Magnolia", director: "Paul Thomas Anderson", tags: ["drama"] },
+      { title: "The Matrix", director: "Lana & Lilly Wachowski", tags: ["action", "scifi"] },
+      { title: "Mission: Impossible", director: "Brian De Palma", tags: ["action"] },
+      { title: "Mission: Impossible 2", director: "John Woo", tags: ["action"] },
+      { title: "Mission: Impossible III", director: "J.J. Abrams", tags: ["action"] },
+      { title: "Mission: Impossible – Ghost Protocol", director: "Brad Bird", tags: ["action"] },
+      { title: "Mission: Impossible – Rogue Nation", director: "Christopher McQuarrie", tags: ["action"] },
+      { title: "Mission: Impossible – Fallout", director: "Christopher McQuarrie", tags: ["action"] },
+      { title: "Moneyball", director: "Bennett Miller", tags: ["drama"] },
+      { title: "Mr. & Mrs. Smith", director: "Doug Liman", tags: ["action", "comedy"] },
+      { title: "No Country for Old Men", director: "Joel & Ethan Coen", tags: ["drama"] },
+      { title: "Notting Hill", director: "Roger Michell", tags: ["romance", "comedy"] },
+      { title: "Oblivion", director: "Joseph Kosinski", tags: ["scifi", "action"] },
+      { title: "Ocean's Eleven", director: "Steven Soderbergh", tags: ["comedy", "action"] },
+      { title: "Ocean's Twelve", director: "Steven Soderbergh", tags: ["comedy", "action"] },
+      { title: "Ocean's Thirteen", director: "Steven Soderbergh", tags: ["comedy", "action"] },
+      { title: "Once Upon a Time in Hollywood", director: "Quentin Tarantino", tags: ["drama"] },
+      { title: "One Battle After Another", director: "Jacques Audiard", tags: ["drama", "foreign"] },
+      { title: "The Other Guys", director: "Adam McKay", tags: ["comedy", "action"] },
+      { title: "Paris, Texas", director: "Wim Wenders", tags: ["drama", "foreign"] },
+      { title: "Perfect Days", director: "Wim Wenders", tags: ["drama", "foreign"] },
+      { title: "Point Break", director: "Kathryn Bigelow", tags: ["action"] },
+      { title: "Pulp Fiction", director: "Quentin Tarantino", tags: ["drama", "action"] },
+      { title: "Punch-Drunk Love", director: "Paul Thomas Anderson", tags: ["romance", "drama"] },
+      { title: "Reservoir Dogs", director: "Quentin Tarantino", tags: ["action", "drama"] },
+      { title: "The Royal Tenenbaums", director: "Wes Anderson", tags: ["comedy", "drama"] },
+      { title: "Safe House", director: "Daniel Espinosa", tags: ["action"] },
+      { title: "Secondhand Lions", director: "Tim McCanlies", tags: ["drama"] },
+      { title: "Seven Psychopaths", director: "Martin McDonagh", tags: ["comedy", "drama"] },
+      { title: "Seven Samurai", director: "Akira Kurosawa", tags: ["action", "foreign"] },
+      { title: "Sicario", director: "Denis Villeneuve", tags: ["action", "drama"] },
+      { title: "Sideways", director: "Alexander Payne", tags: ["comedy", "drama"] },
+      { title: "Silver Linings Playbook", director: "David O. Russell", tags: ["romance", "drama"] },
+      { title: "Somewhere", director: "Sofia Coppola", tags: ["drama"] },
+      { title: "Song to Song", director: "Terrence Malick", tags: ["drama", "romance"] },
+      { title: "A Star Is Born", director: "Bradley Cooper", tags: ["drama", "romance"] },
+      { title: "Star Trek (2009)", director: "J.J. Abrams", tags: ["scifi", "action"] },
+      { title: "Star Wars series", director: "Various", tags: ["scifi", "action"] },
+      { title: "There Will Be Blood", director: "Paul Thomas Anderson", tags: ["drama"] },
+      { title: "This Is Spinal Tap", director: "Rob Reiner", tags: ["comedy"] },
+      { title: "Training Day", director: "Antoine Fuqua", tags: ["drama", "action"] },
+      { title: "The Transporter", director: "Louis Leterrier", tags: ["action"] },
+      { title: "Office Space", director: "Mike Judge", tags: ["comedy"] },
+      { title: "Jojo Rabbit", director: "Taika Waititi", tags: ["comedy", "drama"] },
+      { title: "Next Goal Wins", director: "Taika Waititi", tags: ["documentary", "comedy"] },
+      { title: "Step Brothers", director: "Adam McKay", tags: ["comedy"] },
+      { title: "Tropic Thunder", director: "Ben Stiller", tags: ["comedy", "action"] },
+      { title: "Vengeance", director: "B.J. Novak", tags: ["comedy", "drama"] },
+      { title: "Walk the Line", director: "James Mangold", tags: ["drama"] },
+      { title: "What We Do in the Shadows", director: "Taika Waititi & Jemaine Clement", tags: ["comedy"] },
+      { title: "When Harry Met Sally", director: "Rob Reiner", tags: ["romance", "comedy"] },
+      { title: "White House Down", director: "Roland Emmerich", tags: ["action"] },
+      { title: "The Wolf of Wall Street", director: "Martin Scorsese", tags: ["drama"] },
+      { title: "The Worst Person in the World", director: "Joachim Trier", tags: ["drama", "romance", "foreign"] },
+      { title: "Thirteen Assassins", director: "Takashi Miike", tags: ["action", "foreign"] },
+      { title: "21 Jump Street", director: "Phil Lord & Christopher Miller", tags: ["comedy", "action"] },
+      { title: "Touching the Void", director: "Kevin Macdonald", tags: ["documentary"] },
+    ];
+
+    function initList(items, listId, countId, searchId, panelId, titleKey, subKey, noun) {
+      const listEl = document.getElementById(listId);
+      const countEl = document.getElementById(countId);
+      const searchEl = document.getElementById(searchId);
+      const panel = document.getElementById(panelId);
+      let activeTag = 'all';
+
+      function render() {
+        const q = searchEl.value.toLowerCase();
+        let n = 0;
+        listEl.innerHTML = '';
+        items.forEach(item => {
+          const matchTag = activeTag === 'all' || item.tags.includes(activeTag);
+          const matchQ = !q || item[titleKey].toLowerCase().includes(q) || item[subKey].toLowerCase().includes(q);
+          if (!matchTag || !matchQ) return;
+          n++;
+          const li = document.createElement('li');
+          li.className = 'item-row';
+          li.innerHTML = `<span class="item-num">${n}</span><span class="item-title">${item[titleKey]}</span><span class="item-sub">${item[subKey]}</span>`;
+          listEl.appendChild(li);
+        });
+        countEl.textContent = `${n} ${noun}${n !== 1 ? 's' : ''}`;
+      }
+
+      panel.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          panel.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeTag = btn.dataset.tag;
+          render();
+        });
+      });
+
+      searchEl.addEventListener('input', render);
+      render();
+    }
+
+    initList(books, 'book-list', 'book-count', 'book-search', 'panel-books', 'title', 'author', 'book');
+    initList(movies, 'movie-list', 'movie-count', 'movie-search', 'panel-movies', 'title', 'director', 'film');
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
