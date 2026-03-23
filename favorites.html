@@ -52,34 +52,12 @@
 
       <!-- Books -->
       <div class="tab-panel active" id="panel-books">
-        <input class="search-input" type="text" placeholder="Search books..." id="book-search" />
-        <div class="filters">
-          <button class="filter-btn active" data-tag="all">All</button>
-          <button class="filter-btn" data-tag="spirituality">Spirituality</button>
-          <button class="filter-btn" data-tag="science">Science</button>
-          <button class="filter-btn" data-tag="fiction">Fiction</button>
-          <button class="filter-btn" data-tag="self">Self</button>
-          <button class="filter-btn" data-tag="business">Business</button>
-          <button class="filter-btn" data-tag="travel">Travel</button>
-          <button class="filter-btn" data-tag="food">Food</button>
-        </div>
         <div class="item-count" id="book-count"></div>
         <ul class="item-list" id="book-list"></ul>
       </div>
 
       <!-- Movies -->
       <div class="tab-panel" id="panel-movies">
-        <input class="search-input" type="text" placeholder="Search movies..." id="movie-search" />
-        <div class="filters">
-          <button class="filter-btn active" data-tag="all">All</button>
-          <button class="filter-btn" data-tag="action">Action</button>
-          <button class="filter-btn" data-tag="comedy">Comedy</button>
-          <button class="filter-btn" data-tag="drama">Drama</button>
-          <button class="filter-btn" data-tag="romance">Romance</button>
-          <button class="filter-btn" data-tag="scifi">Sci-fi</button>
-          <button class="filter-btn" data-tag="documentary">Documentary</button>
-          <button class="filter-btn" data-tag="foreign">Foreign</button>
-        </div>
         <div class="item-count" id="movie-count"></div>
         <ul class="item-list" id="movie-list"></ul>
       </div>
@@ -274,45 +252,22 @@
       { title: "Touching the Void", director: "Kevin Macdonald", tags: ["documentary"] },
     ];
 
-    function initList(items, listId, countId, searchId, panelId, titleKey, subKey, noun) {
+    function initList(items, listId, countId, titleKey, subKey, noun) {
       const listEl = document.getElementById(listId);
       const countEl = document.getElementById(countId);
-      const searchEl = document.getElementById(searchId);
-      const panel = document.getElementById(panelId);
-      let activeTag = 'all';
 
-      function render() {
-        const q = searchEl.value.toLowerCase();
-        let n = 0;
-        listEl.innerHTML = '';
-        items.forEach(item => {
-          const matchTag = activeTag === 'all' || item.tags.includes(activeTag);
-          const matchQ = !q || item[titleKey].toLowerCase().includes(q) || item[subKey].toLowerCase().includes(q);
-          if (!matchTag || !matchQ) return;
-          n++;
-          const li = document.createElement('li');
-          li.className = 'item-row';
-          li.innerHTML = `<span class="item-num">${n}</span><span class="item-title">${item[titleKey]}</span><span class="item-sub">${item[subKey]}</span>`;
-          listEl.appendChild(li);
-        });
-        countEl.textContent = `${n} ${noun}${n !== 1 ? 's' : ''}`;
-      }
-
-      panel.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          panel.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          activeTag = btn.dataset.tag;
-          render();
-        });
+      listEl.innerHTML = '';
+      items.forEach((item, i) => {
+        const li = document.createElement('li');
+        li.className = 'item-row';
+        li.innerHTML = `<span class="item-num">${i + 1}</span><span class="item-title">${item[titleKey]}</span><span class="item-sub">${item[subKey]}</span>`;
+        listEl.appendChild(li);
       });
-
-      searchEl.addEventListener('input', render);
-      render();
+      countEl.textContent = `${items.length} ${noun}${items.length !== 1 ? 's' : ''}`;
     }
 
-    initList(books, 'book-list', 'book-count', 'book-search', 'panel-books', 'title', 'author', 'book');
-    initList(movies, 'movie-list', 'movie-count', 'movie-search', 'panel-movies', 'title', 'director', 'film');
+    initList(books, 'book-list', 'book-count', 'title', 'author', 'book');
+    initList(movies, 'movie-list', 'movie-count', 'title', 'director', 'film');
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
