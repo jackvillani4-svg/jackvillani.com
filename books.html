@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books — Jack Villani</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-wrap">
+    <nav>
+      <a href="index.html">About</a>
+      <a href="play.html">Play</a>
+    </nav>
+    <div class="page-body">
+      <div class="item-count" id="book-count"></div>
+      <ul class="item-list" id="book-list"></ul>
+    </div>
+  </div>
+
+  <script>
+    const books = [
+      { title: "The Name of the Wind", author: "Patrick Rothfuss" },
+      { title: "East of Eden", author: "John Steinbeck" },
+      { title: "Four Thousand Weeks", author: "Oliver Burkeman" },
+      { title: "Start Where You Are", author: "Pema Chödrön" },
+      { title: "Not Fade Away", author: "Laurence Shames & Peter Barton" },
+      { title: "Siddhartha", author: "Hermann Hesse" },
+      { title: "The 4-Hour Work Week", author: "Tim Ferriss" },
+      { title: "The Wisdom of Insecurity", author: "Alan Watts" },
+      { title: "The Lion Tracker's Guide to Life", author: "Boyd Varty" },
+      { title: "Awareness", author: "Anthony De Mello" },
+      { title: "On Having No Head", author: "Douglas Harding" },
+      { title: "Jed Talks #1", author: "Jed McKenna" },
+      { title: "Jed Talks #2", author: "Jed McKenna" },
+      { title: "Jed Talks #3", author: "Jed McKenna" },
+      { title: "Spiritual Enlightenment", author: "Jed McKenna" },
+      { title: "Spiritually Incorrect Enlightenment", author: "Jed McKenna" },
+      { title: "Spiritual Warfare", author: "Jed McKenna" },
+      { title: "Eat Pray Love", author: "Elizabeth Gilbert" },
+      { title: "Moonwalking with Einstein", author: "Joshua Foer" },
+      { title: "Outliers", author: "Malcolm Gladwell" },
+      { title: "The Tipping Point", author: "Malcolm Gladwell" },
+      { title: "Blink", author: "Malcolm Gladwell" },
+      { title: "David and Goliath", author: "Malcolm Gladwell" },
+      { title: "Talking to Strangers", author: "Malcolm Gladwell" },
+      { title: "Revenge of the Tipping Point", author: "Malcolm Gladwell" },
+      { title: "Thinking, Fast and Slow", author: "Daniel Kahneman" },
+      { title: "Sex, Drugs, and Cocoa Puffs", author: "Chuck Klosterman" },
+      { title: "Finite and Infinite Games", author: "James Carse" },
+      { title: "How to Change Your Mind", author: "Michael Pollan" },
+      { title: "Setting the Table", author: "Danny Meyer" },
+      { title: "Be Our Guest", author: "The Disney Institute" },
+      { title: "Caffeine", author: "Michael Pollan" },
+      { title: "The Unbearable Lightness of Being", author: "Milan Kundera" },
+      { title: "A Short History of Nearly Everything", author: "Bill Bryson" },
+      { title: "At Home", author: "Bill Bryson" },
+      { title: "The Body", author: "Bill Bryson" },
+      { title: "Surely You're Joking, Mr. Feynman!", author: "Richard P. Feynman" },
+      { title: "Lonesome Dove", author: "Larry McMurtry" },
+      { title: "Ender's Game", author: "Orson Scott Card" },
+      { title: "Ready Player One", author: "Ernest Cline" },
+      { title: "Neuromancer", author: "William Gibson" },
+      { title: "Snow Crash", author: "Neal Stephenson" },
+      { title: "Kitchen Confidential", author: "Anthony Bourdain" },
+      { title: "Vagabonding", author: "Rolf Potts" },
+      { title: "Win Bigly", author: "Scott Adams" },
+      { title: "How to Fail at Almost Everything and Still Win Big", author: "Scott Adams" },
+      { title: "The Subtle Art of Not Giving a F*ck", author: "Mark Manson" },
+      { title: "The Defining Decade", author: "Meg Jay" },
+      { title: "No Bad Parts", author: "Richard C. Schwartz" },
+      { title: "Harry Potter and the Philosopher's Stone", author: "J.K. Rowling" },
+      { title: "Harry Potter and the Chamber of Secrets", author: "J.K. Rowling" },
+      { title: "Harry Potter and the Prisoner of Azkaban", author: "J.K. Rowling" },
+      { title: "Harry Potter and the Goblet of Fire", author: "J.K. Rowling" },
+      { title: "Harry Potter and the Order of the Phoenix", author: "J.K. Rowling" },
+      { title: "Harry Potter and the Half-Blood Prince", author: "J.K. Rowling" },
+      { title: "Harry Potter and the Deathly Hallows", author: "J.K. Rowling" },
+      { title: "Waking Up", author: "Sam Harris" },
+    ];
+
+    const listEl = document.getElementById('book-list');
+    const countEl = document.getElementById('book-count');
+    books.forEach((book, i) => {
+      const li = document.createElement('li');
+      li.className = 'item-row';
+      li.innerHTML = '<span class="item-num">' + (i + 1) + '</span><span class="item-title">' + book.title + '</span><span class="item-sub">' + book.author + '</span>';
+      listEl.appendChild(li);
+    });
+    countEl.textContent = books.length + ' books';
+  </script>
+</body>
+</html>
