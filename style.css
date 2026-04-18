@@ -18,6 +18,8 @@ body {
   line-height: 1.7;
   min-height: 100vh;
 }
+a { color: #b8a9c9; text-decoration: none; }
+a:visited { color: #b8a9c9; }
 .site-wrap {
   max-width: 640px;
   margin: 0 auto;
