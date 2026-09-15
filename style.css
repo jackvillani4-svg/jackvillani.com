@@ -82,43 +82,5 @@ ul.plain {
 ul.plain li { margin-top: 1rem; }
 ul.plain li:first-child { margin-top: 0; }
 
-ul.items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-ul.items li {
-  margin-top: 0.6rem;
-  display: flex;
-  gap: 0.6rem;
-  align-items: baseline;
-}
-ul.items .num {
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--muted);
-  min-width: 1.6em;
-  text-align: right;
-}
-ul.items .sub {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.photos {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.photos li { margin-top: 2.5rem; }
-.photos li:first-child { margin-top: 0; }
-
 .poem { margin: 1.5rem 0; }
 .poem p { margin: 0 0 1rem; }
-
-.thumb {
-  display: block;
-  max-width: 140px;
-  margin-bottom: 1.5rem;
-}
