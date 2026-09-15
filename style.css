@@ -48,13 +48,6 @@ header h1 {
   letter-spacing: 0.02em;
 }
 header h1 a { color: var(--text); text-decoration: none; }
-header nav {
-  font-family: var(--sans);
-  font-size: 0.85rem;
-}
-header nav a { color: var(--muted); text-decoration: none; margin-left: 1rem; }
-header nav a:first-child { margin-left: 0; }
-header nav a.active, header nav a:hover { color: var(--link); text-decoration: underline; }
 
 h2 {
   font-family: var(--serif);
@@ -66,21 +59,3 @@ h2 {
 }
 h2:first-of-type { margin-top: 0; }
 p { margin: 1rem 0; }
-
-.byline {
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin: -0.5rem 0 1.5rem;
-}
-
-ul.plain {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-ul.plain li { margin-top: 1rem; }
-ul.plain li:first-child { margin-top: 0; }
-
-.poem { margin: 1.5rem 0; }
-.poem p { margin: 0 0 1rem; }
