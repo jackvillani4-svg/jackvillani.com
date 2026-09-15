@@ -1,15 +1,15 @@
 *, *::before, *::after { box-sizing: border-box; }
 :root {
   --bg: #f0ead6;
-  --text: #000080;
-  --link: #000080;
+  --text: #00112b;
+  --link: #00112b;
   --serif: 'Times New Roman', Times, serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #111;
-    --text: #b3c6ff;
-    --link: #b3c6ff;
+    --text: #8fa3c7;
+    --link: #8fa3c7;
   }
 }
 html { background: var(--bg); }
