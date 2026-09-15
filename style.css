@@ -1,6 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; }
 :root {
-  --bg: #f0ead6;
+  --bg: #faf9f6;
   --text: #00112b;
   --link: #00112b;
   --serif: 'Times New Roman', Times, serif;
