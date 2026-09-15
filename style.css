@@ -1,16 +1,9 @@
 *, *::before, *::after { box-sizing: border-box; }
 :root {
-  --bg: #faf9f6;
-  --text: #00112b;
-  --link: #00112b;
+  --bg: #111;
+  --text: #8fa3c7;
+  --link: #8fa3c7;
   --serif: 'Times New Roman', Times, serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111;
-    --text: #8fa3c7;
-    --link: #8fa3c7;
-  }
 }
 html { background: var(--bg); }
 body {
