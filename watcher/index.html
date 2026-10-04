@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>watcher</title>
+<style>
+  :root { --bg:#ffffff; --ink:#000000; --muted:#6b6b6b; --gap:6px; box-sizing:border-box;
+          padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; } }
+  :root[data-theme="dark"] { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; }
+  *, *::before, *::after { box-sizing:inherit; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font-family: Georgia, "Times New Roman", serif; }
+  header { max-width:1400px; margin:0 auto; padding:2.5rem 1rem 1.5rem; }
+  header a { color:var(--muted); text-decoration:none; font-size:.95rem; }
+  header a:hover, header a:focus-visible { color:var(--ink); text-decoration:underline; }
+  h1 { font-weight:normal; font-size:1.6rem; margin:.4rem 0 0; }
+  /* justified rows: each photo keeps its own shape, rows fill the width */
+  .grid { max-width:1400px; margin:0 auto; padding:0 1rem 4rem;
+          display:flex; flex-wrap:wrap; gap:var(--gap); }
+  .grid::after { content:""; flex-grow:999; }
+  .ph { flex-grow:calc(var(--r) * 100); flex-basis:calc(var(--r) * 220px); display:block; }
+  .ph img { display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover; background:#ddd; }
+  .ph:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  @media (max-width:600px) { .ph { flex-basis:calc(var(--r) * 110px); } }
+  /* viewer */
+  dialog { border:0; padding:0; max-width:100vw; max-height:100vh; width:100vw; height:100%;
+           background:rgba(0,0,0,.94); }
+  dialog::backdrop { background:rgba(0,0,0,.94); }
+  dialog img { position:absolute; inset:0; margin:auto; max-width:94vw; max-height:90vh; }
+  dialog button { position:absolute; background:none; border:0; color:#fff; font:inherit;
+                  font-size:1.6rem; padding:1rem; cursor:pointer; opacity:.7; }
+  dialog button:hover, dialog button:focus-visible { opacity:1; }
+  .close { top:env(safe-area-inset-top,0px); right:0; }
+  .prev { left:0; top:50%; transform:translateY(-50%); }
+  .next { right:0; top:50%; transform:translateY(-50%); }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">me in 10 seconds</a>
+  <h1>watcher</h1>
+</header>
+<main class="grid">
+    <a class="ph" href="/images/watcher/archer.jpg" style="--r:0.6667" data-i="0"><img src="/images/watcher/archer.jpg" alt="Archer" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/high-maintenance.jpg" style="--r:0.6667" data-i="1"><img src="/images/watcher/high-maintenance.jpg" alt="High Maintenance" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mr-mrs-smith-tv-series.jpg" style="--r:0.6667" data-i="2"><img src="/images/watcher/mr-mrs-smith-tv-series.jpg" alt="Mr. &amp; Mrs. Smith" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-italian-job.jpg" style="--r:0.6667" data-i="3"><img src="/images/watcher/the-italian-job.jpg" alt="The Italian Job" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/detroiters.jpg" style="--r:0.6667" data-i="4"><img src="/images/watcher/detroiters.jpg" alt="Detroiters" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/buena-vista-social-club.jpg" style="--r:0.6667" data-i="5"><img src="/images/watcher/buena-vista-social-club.jpg" alt="Buena Vista Social Club" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/paris-texas.jpg" style="--r:0.6667" data-i="6"><img src="/images/watcher/paris-texas.jpg" alt="Paris, Texas" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/perfect-days.jpg" style="--r:0.6667" data-i="7"><img src="/images/watcher/perfect-days.jpg" alt="Perfect Days" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/forgetting-sarah-marshall.jpg" style="--r:0.6667" data-i="8"><img src="/images/watcher/forgetting-sarah-marshall.jpg" alt="Forgetting Sarah Marshall" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/notting-hill.jpg" style="--r:0.6667" data-i="9"><img src="/images/watcher/notting-hill.jpg" alt="Notting Hill" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/love-other-drugs.jpg" style="--r:0.6667" data-i="10"><img src="/images/watcher/love-other-drugs.jpg" alt="Love &amp; Other Drugs" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/bridget-jones-s-diary.jpg" style="--r:0.6667" data-i="11"><img src="/images/watcher/bridget-jones-s-diary.jpg" alt="Bridget Jones&#x27;s Diary" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/love-actually.jpg" style="--r:0.6667" data-i="12"><img src="/images/watcher/love-actually.jpg" alt="Love Actually" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-secret-life-of-walter-mitty.jpg" style="--r:0.6667" data-i="13"><img src="/images/watcher/the-secret-life-of-walter-mitty.jpg" alt="The Secret Life of Walter Mitty" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/caught-stealing.jpg" style="--r:0.6667" data-i="14"><img src="/images/watcher/caught-stealing.jpg" alt="Caught Stealing" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/one-battle-after-another.jpg" style="--r:0.6667" data-i="15"><img src="/images/watcher/one-battle-after-another.jpg" alt="One Battle After Another" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/boogie-nights.jpg" style="--r:0.6667" data-i="16"><img src="/images/watcher/boogie-nights.jpg" alt="Boogie Nights" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/magnolia.jpg" style="--r:0.6667" data-i="17"><img src="/images/watcher/magnolia.jpg" alt="Magnolia" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/inherent-vice.jpg" style="--r:0.6667" data-i="18"><img src="/images/watcher/inherent-vice.jpg" alt="Inherent Vice" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/punch-drunk-love.jpg" style="--r:0.6667" data-i="19"><img src="/images/watcher/punch-drunk-love.jpg" alt="Punch-Drunk Love" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/catch-me-if-you-can.jpg" style="--r:0.6667" data-i="20"><img src="/images/watcher/catch-me-if-you-can.jpg" alt="Catch Me If You Can" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/secondhand-lions.jpg" style="--r:0.6667" data-i="21"><img src="/images/watcher/secondhand-lions.jpg" alt="Secondhand Lions" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/guy-ritchie-s-the-covenant.jpg" style="--r:0.6667" data-i="22"><img src="/images/watcher/guy-ritchie-s-the-covenant.jpg" alt="Guy Ritchie&#x27;s The Covenant" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/white-house-down.jpg" style="--r:0.6667" data-i="23"><img src="/images/watcher/white-house-down.jpg" alt="White House Down" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/tropic-thunder.jpg" style="--r:0.6667" data-i="24"><img src="/images/watcher/tropic-thunder.jpg" alt="Tropic Thunder" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/point-break.jpg" style="--r:0.6667" data-i="25"><img src="/images/watcher/point-break.jpg" alt="Point Break" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-transporter.jpg" style="--r:0.6667" data-i="26"><img src="/images/watcher/the-transporter.jpg" alt="The Transporter" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/next-goal-wins.jpg" style="--r:0.6667" data-i="27"><img src="/images/watcher/next-goal-wins.jpg" alt="Next Goal Wins" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/jojo-rabbit.jpg" style="--r:0.6667" data-i="28"><img src="/images/watcher/jojo-rabbit.jpg" alt="Jojo Rabbit" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/goodfellas.jpg" style="--r:0.6667" data-i="29"><img src="/images/watcher/goodfellas.jpg" alt="Goodfellas" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/casino.jpg" style="--r:0.6789" data-i="30"><img src="/images/watcher/casino.jpg" alt="Casino" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-prestige.jpg" style="--r:0.6667" data-i="31"><img src="/images/watcher/the-prestige.jpg" alt="The Prestige" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/batman-begins.jpg" style="--r:0.6667" data-i="32"><img src="/images/watcher/batman-begins.jpg" alt="Batman Begins" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-dark-knight.jpg" style="--r:0.6667" data-i="33"><img src="/images/watcher/the-dark-knight.jpg" alt="The Dark Knight" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-dark-knight-rises.jpg" style="--r:0.6667" data-i="34"><img src="/images/watcher/the-dark-knight-rises.jpg" alt="The Dark Knight Rises" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-batman.jpg" style="--r:0.6667" data-i="35"><img src="/images/watcher/the-batman.jpg" alt="The Batman" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/hard-eight.jpg" style="--r:0.6667" data-i="36"><img src="/images/watcher/hard-eight.jpg" alt="Hard Eight" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/phantom-thread.jpg" style="--r:0.6667" data-i="37"><img src="/images/watcher/phantom-thread.jpg" alt="Phantom Thread" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/vice.jpg" style="--r:0.6667" data-i="38"><img src="/images/watcher/vice.jpg" alt="Vice" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-chair-company.jpg" style="--r:0.6667" data-i="39"><img src="/images/watcher/the-chair-company.jpg" alt="The Chair Company" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-rock.jpg" style="--r:0.6667" data-i="40"><img src="/images/watcher/the-rock.jpg" alt="The Rock" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/iron-man.jpg" style="--r:0.6667" data-i="41"><img src="/images/watcher/iron-man.jpg" alt="Iron Man" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/dune-part-two.jpg" style="--r:0.6667" data-i="42"><img src="/images/watcher/dune-part-two.jpg" alt="Dune: Part Two" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/annie-hall.jpg" style="--r:0.6667" data-i="43"><img src="/images/watcher/annie-hall.jpg" alt="Annie Hall" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/manhattan.jpg" style="--r:0.6667" data-i="44"><img src="/images/watcher/manhattan.jpg" alt="Manhattan" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/vicky-cristina-barcelona.jpg" style="--r:0.6667" data-i="45"><img src="/images/watcher/vicky-cristina-barcelona.jpg" alt="Vicky Cristina Barcelona" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/blade-runner.jpg" style="--r:0.6667" data-i="46"><img src="/images/watcher/blade-runner.jpg" alt="Blade Runner" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/blade-runner-2049.jpg" style="--r:0.6667" data-i="47"><img src="/images/watcher/blade-runner-2049.jpg" alt="Blade Runner 2049" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/key-peele.jpg" style="--r:0.6667" data-i="48"><img src="/images/watcher/key-peele.jpg" alt="Key &amp; Peele" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/akira.jpg" style="--r:0.6667" data-i="49"><img src="/images/watcher/akira.jpg" alt="Akira" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/trigun.jpg" style="--r:0.6667" data-i="50"><img src="/images/watcher/trigun.jpg" alt="Trigun" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/perfect-blue.jpg" style="--r:0.6667" data-i="51"><img src="/images/watcher/perfect-blue.jpg" alt="Perfect Blue" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/what-we-do-in-the-shadows.jpg" style="--r:0.6667" data-i="52"><img src="/images/watcher/what-we-do-in-the-shadows.jpg" alt="What We Do in the Shadows" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/30-rock.jpg" style="--r:0.6667" data-i="53"><img src="/images/watcher/30-rock.jpg" alt="30 Rock" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/live-and-let-die.jpg" style="--r:0.6667" data-i="54"><img src="/images/watcher/live-and-let-die.jpg" alt="Live and Let Die" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-man-with-the-golden-gun.jpg" style="--r:0.6667" data-i="55"><img src="/images/watcher/the-man-with-the-golden-gun.jpg" alt="The Man with the Golden Gun" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-spy-who-loved-me.jpg" style="--r:0.6667" data-i="56"><img src="/images/watcher/the-spy-who-loved-me.jpg" alt="The Spy Who Loved Me" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/moonraker.jpg" style="--r:0.6667" data-i="57"><img src="/images/watcher/moonraker.jpg" alt="Moonraker" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/for-your-eyes-only.jpg" style="--r:0.6667" data-i="58"><img src="/images/watcher/for-your-eyes-only.jpg" alt="For Your Eyes Only" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/octopussy.jpg" style="--r:0.6667" data-i="59"><img src="/images/watcher/octopussy.jpg" alt="Octopussy" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/a-view-to-a-kill.jpg" style="--r:0.6667" data-i="60"><img src="/images/watcher/a-view-to-a-kill.jpg" alt="A View to a Kill" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/goldeneye.jpg" style="--r:0.6667" data-i="61"><img src="/images/watcher/goldeneye.jpg" alt="GoldenEye" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/tomorrow-never-dies.jpg" style="--r:0.6667" data-i="62"><img src="/images/watcher/tomorrow-never-dies.jpg" alt="Tomorrow Never Dies" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-world-is-not-enough.jpg" style="--r:0.6667" data-i="63"><img src="/images/watcher/the-world-is-not-enough.jpg" alt="The World Is Not Enough" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/die-another-day.jpg" style="--r:0.6667" data-i="64"><img src="/images/watcher/die-another-day.jpg" alt="Die Another Day" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/casino-royale.jpg" style="--r:0.6667" data-i="65"><img src="/images/watcher/casino-royale.jpg" alt="Casino Royale" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/quantum-of-solace.jpg" style="--r:0.6667" data-i="66"><img src="/images/watcher/quantum-of-solace.jpg" alt="Quantum of Solace" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/skyfall.jpg" style="--r:0.6667" data-i="67"><img src="/images/watcher/skyfall.jpg" alt="Skyfall" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/spectre.jpg" style="--r:0.6667" data-i="68"><img src="/images/watcher/spectre.jpg" alt="Spectre" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/no-time-to-die.jpg" style="--r:0.6744" data-i="69"><img src="/images/watcher/no-time-to-die.jpg" alt="No Time to Die" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-bourne-identity.jpg" style="--r:0.7344" data-i="70"><img src="/images/watcher/the-bourne-identity.jpg" alt="The Bourne Identity" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-bourne-supremacy.jpg" style="--r:0.6756" data-i="71"><img src="/images/watcher/the-bourne-supremacy.jpg" alt="The Bourne Supremacy" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/john-wick.jpg" style="--r:0.6667" data-i="72"><img src="/images/watcher/john-wick.jpg" alt="John Wick" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/john-wick-chapter-2.jpg" style="--r:0.649" data-i="73"><img src="/images/watcher/john-wick-chapter-2.jpg" alt="John Wick: Chapter 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/john-wick-chapter-3-parabellum.jpg" style="--r:0.6493" data-i="74"><img src="/images/watcher/john-wick-chapter-3-parabellum.jpg" alt="John Wick: Chapter 3 – Parabellum" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/john-wick-chapter-4.jpg" style="--r:0.6757" data-i="75"><img src="/images/watcher/john-wick-chapter-4.jpg" alt="John Wick: Chapter 4" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible.jpg" style="--r:0.6739" data-i="76"><img src="/images/watcher/mission-impossible.jpg" alt="Mission: Impossible" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-2.jpg" style="--r:0.6667" data-i="77"><img src="/images/watcher/mission-impossible-2.jpg" alt="Mission: Impossible 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-iii.jpg" style="--r:0.672" data-i="78"><img src="/images/watcher/mission-impossible-iii.jpg" alt="Mission: Impossible III" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-ghost-protocol.jpg" style="--r:0.6748" data-i="79"><img src="/images/watcher/mission-impossible-ghost-protocol.jpg" alt="Mission: Impossible – Ghost Protocol" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-rogue-nation.jpg" style="--r:0.6528" data-i="80"><img src="/images/watcher/mission-impossible-rogue-nation.jpg" alt="Mission: Impossible – Rogue Nation" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-fallout.jpg" style="--r:0.6667" data-i="81"><img src="/images/watcher/mission-impossible-fallout.jpg" alt="Mission: Impossible – Fallout" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-dead-reckoning-part-one.jpg" style="--r:0.6793" data-i="82"><img src="/images/watcher/mission-impossible-dead-reckoning-part-one.jpg" alt="Mission: Impossible – Dead Reckoning Part One" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mission-impossible-the-final-reckoning.jpg" style="--r:0.6739" data-i="83"><img src="/images/watcher/mission-impossible-the-final-reckoning.jpg" alt="Mission: Impossible – The Final Reckoning" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/wick-is-pain.jpg" style="--r:0.6757" data-i="84"><img src="/images/watcher/wick-is-pain.jpg" alt="Wick Is Pain" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/succession.jpg" style="--r:0.6667" data-i="85"><img src="/images/watcher/succession.jpg" alt="Succession" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/kill-la-kill.jpg" style="--r:0.6667" data-i="86"><img src="/images/watcher/kill-la-kill.jpg" alt="Kill la Kill" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/drunk-history.jpg" style="--r:0.6667" data-i="87"><img src="/images/watcher/drunk-history.jpg" alt="Drunk History" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/from-the-world-of-john-wick-ballerina.jpg" style="--r:0.6757" data-i="88"><img src="/images/watcher/from-the-world-of-john-wick-ballerina.jpg" alt="From the World of John Wick: Ballerina" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-big-lebowski.jpg" style="--r:0.6667" data-i="89"><img src="/images/watcher/the-big-lebowski.jpg" alt="The Big Lebowski" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-big-short.jpg" style="--r:0.6667" data-i="90"><img src="/images/watcher/the-big-short.jpg" alt="The Big Short" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/birdman.jpg" style="--r:0.6667" data-i="91"><img src="/images/watcher/birdman.jpg" alt="Birdman" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/blue-giant.jpg" style="--r:0.6667" data-i="92"><img src="/images/watcher/blue-giant.jpg" alt="Blue Giant" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-brothers-bloom.jpg" style="--r:0.6667" data-i="93"><img src="/images/watcher/the-brothers-bloom.jpg" alt="The Brothers Bloom" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/call-me-by-your-name.jpg" style="--r:0.6667" data-i="94"><img src="/images/watcher/call-me-by-your-name.jpg" alt="Call Me by Your Name" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-departed.jpg" style="--r:0.6667" data-i="95"><img src="/images/watcher/the-departed.jpg" alt="The Departed" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-devil-wears-prada.jpg" style="--r:0.6667" data-i="96"><img src="/images/watcher/the-devil-wears-prada.jpg" alt="The Devil Wears Prada" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/eat-pray-love.jpg" style="--r:0.6667" data-i="97"><img src="/images/watcher/eat-pray-love.jpg" alt="Eat Pray Love" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/fantastic-mr-fox.jpg" style="--r:0.6468" data-i="98"><img src="/images/watcher/fantastic-mr-fox.jpg" alt="Fantastic Mr. Fox" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/fast-furious.jpg" style="--r:0.6733" data-i="99"><img src="/images/watcher/fast-furious.jpg" alt="Fast &amp; Furious" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-fast-and-the-furious.jpg" style="--r:0.6667" data-i="100"><img src="/images/watcher/the-fast-and-the-furious.jpg" alt="The Fast and the Furious" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-fast-and-the-furious-tokyo-drift.jpg" style="--r:0.6667" data-i="101"><img src="/images/watcher/the-fast-and-the-furious-tokyo-drift.jpg" alt="The Fast and the Furious: Tokyo Drift" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/a-few-good-men.jpg" style="--r:0.6667" data-i="102"><img src="/images/watcher/a-few-good-men.jpg" alt="A Few Good Men" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-gentlemen.jpg" style="--r:0.6667" data-i="103"><img src="/images/watcher/the-gentlemen.jpg" alt="The Gentlemen" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-hangover.jpg" style="--r:0.6667" data-i="104"><img src="/images/watcher/the-hangover.jpg" alt="The Hangover" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-sorcerer-s-stone.jpg" style="--r:0.6667" data-i="105"><img src="/images/watcher/harry-potter-and-the-sorcerer-s-stone.jpg" alt="Harry Potter and the Sorcerer&#x27;s Stone" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-chamber-of-secrets.jpg" style="--r:0.6667" data-i="106"><img src="/images/watcher/harry-potter-and-the-chamber-of-secrets.jpg" alt="Harry Potter and the Chamber of Secrets" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-prisoner-of-azkaban.jpg" style="--r:0.6667" data-i="107"><img src="/images/watcher/harry-potter-and-the-prisoner-of-azkaban.jpg" alt="Harry Potter and the Prisoner of Azkaban" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-goblet-of-fire.jpg" style="--r:0.6667" data-i="108"><img src="/images/watcher/harry-potter-and-the-goblet-of-fire.jpg" alt="Harry Potter and the Goblet of Fire" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-order-of-the-phoenix.jpg" style="--r:0.6667" data-i="109"><img src="/images/watcher/harry-potter-and-the-order-of-the-phoenix.jpg" alt="Harry Potter and the Order of the Phoenix" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-half-blood-prince.jpg" style="--r:0.6667" data-i="110"><img src="/images/watcher/harry-potter-and-the-half-blood-prince.jpg" alt="Harry Potter and the Half-Blood Prince" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-deathly-hallows-part-1.jpg" style="--r:0.6667" data-i="111"><img src="/images/watcher/harry-potter-and-the-deathly-hallows-part-1.jpg" alt="Harry Potter and the Deathly Hallows – Part 1" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/harry-potter-and-the-deathly-hallows-part-2.jpg" style="--r:0.6667" data-i="112"><img src="/images/watcher/harry-potter-and-the-deathly-hallows-part-2.jpg" alt="Harry Potter and the Deathly Hallows – Part 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/horrible-bosses.jpg" style="--r:0.6667" data-i="113"><img src="/images/watcher/horrible-bosses.jpg" alt="Horrible Bosses" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/how-to-lose-a-guy-in-10-days.jpg" style="--r:0.6667" data-i="114"><img src="/images/watcher/how-to-lose-a-guy-in-10-days.jpg" alt="How to Lose a Guy in 10 Days" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/in-bruges.jpg" style="--r:0.6667" data-i="115"><img src="/images/watcher/in-bruges.jpg" alt="In Bruges" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/inglourious-basterds.jpg" style="--r:0.6667" data-i="116"><img src="/images/watcher/inglourious-basterds.jpg" alt="Inglourious Basterds" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/interstellar.jpg" style="--r:0.6667" data-i="117"><img src="/images/watcher/interstellar.jpg" alt="Interstellar" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/jerry-maguire.jpg" style="--r:0.6667" data-i="118"><img src="/images/watcher/jerry-maguire.jpg" alt="Jerry Maguire" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/kill-bill-vol-1.jpg" style="--r:0.6667" data-i="119"><img src="/images/watcher/kill-bill-vol-1.jpg" alt="Kill Bill: Vol. 1" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/kill-bill-vol-2.jpg" style="--r:0.6667" data-i="120"><img src="/images/watcher/kill-bill-vol-2.jpg" alt="Kill Bill: Vol. 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/knives-out.jpg" style="--r:0.6667" data-i="121"><img src="/images/watcher/knives-out.jpg" alt="Knives Out" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/la-la-land.jpg" style="--r:0.6667" data-i="122"><img src="/images/watcher/la-la-land.jpg" alt="La La Land" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-last-samurai.jpg" style="--r:0.6667" data-i="123"><img src="/images/watcher/the-last-samurai.jpg" alt="The Last Samurai" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/edge-of-tomorrow-live-die-repeat.jpg" style="--r:0.6667" data-i="124"><img src="/images/watcher/edge-of-tomorrow-live-die-repeat.jpg" alt="Edge of Tomorrow / Live Die Repeat" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-lord-of-the-rings-the-fellowship-of-the-ring.jpg" style="--r:0.6687" data-i="125"><img src="/images/watcher/the-lord-of-the-rings-the-fellowship-of-the-ring.jpg" alt="The Lord of the Rings: The Fellowship of the Ring" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-lord-of-the-rings-the-two-towers.jpg" style="--r:0.6748" data-i="126"><img src="/images/watcher/the-lord-of-the-rings-the-two-towers.jpg" alt="The Lord of the Rings: The Two Towers" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-lord-of-the-rings-the-return-of-the-king.jpg" style="--r:0.6748" data-i="127"><img src="/images/watcher/the-lord-of-the-rings-the-return-of-the-king.jpg" alt="The Lord of the Rings: The Return of the King" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/lucky-number-slevin.jpg" style="--r:0.6667" data-i="128"><img src="/images/watcher/lucky-number-slevin.jpg" alt="Lucky Number Slevin" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-matrix.jpg" style="--r:0.6667" data-i="129"><img src="/images/watcher/the-matrix.jpg" alt="The Matrix" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/moneyball.jpg" style="--r:0.6667" data-i="130"><img src="/images/watcher/moneyball.jpg" alt="Moneyball" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/nobody.jpg" style="--r:0.6667" data-i="131"><img src="/images/watcher/nobody.jpg" alt="Nobody" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/nobody-2.jpg" style="--r:0.6667" data-i="132"><img src="/images/watcher/nobody-2.jpg" alt="Nobody 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/oblivion.jpg" style="--r:0.6667" data-i="133"><img src="/images/watcher/oblivion.jpg" alt="Oblivion" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/ocean-s-eleven.jpg" style="--r:0.6667" data-i="134"><img src="/images/watcher/ocean-s-eleven.jpg" alt="Ocean&#x27;s Eleven" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/ocean-s-twelve.jpg" style="--r:0.6667" data-i="135"><img src="/images/watcher/ocean-s-twelve.jpg" alt="Ocean&#x27;s Twelve" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/ocean-s-thirteen.jpg" style="--r:0.6667" data-i="136"><img src="/images/watcher/ocean-s-thirteen.jpg" alt="Ocean&#x27;s Thirteen" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-other-guys.jpg" style="--r:0.6667" data-i="137"><img src="/images/watcher/the-other-guys.jpg" alt="The Other Guys" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/seven-psychopaths.jpg" style="--r:0.6667" data-i="138"><img src="/images/watcher/seven-psychopaths.jpg" alt="Seven Psychopaths" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/safe-house.jpg" style="--r:0.6755" data-i="139"><img src="/images/watcher/safe-house.jpg" alt="Safe House" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-royal-tenenbaums.jpg" style="--r:0.6667" data-i="140"><img src="/images/watcher/the-royal-tenenbaums.jpg" alt="The Royal Tenenbaums" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/seven-samurai.jpg" style="--r:0.6667" data-i="141"><img src="/images/watcher/seven-samurai.jpg" alt="Seven Samurai" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/sideways.jpg" style="--r:0.6667" data-i="142"><img src="/images/watcher/sideways.jpg" alt="Sideways" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/silver-linings-playbook.jpg" style="--r:0.6667" data-i="143"><img src="/images/watcher/silver-linings-playbook.jpg" alt="Silver Linings Playbook" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/somewhere.jpg" style="--r:0.6667" data-i="144"><img src="/images/watcher/somewhere.jpg" alt="Somewhere" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/song-to-song.jpg" style="--r:0.6667" data-i="145"><img src="/images/watcher/song-to-song.jpg" alt="Song to Song" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/a-star-is-born.jpg" style="--r:0.6667" data-i="146"><img src="/images/watcher/a-star-is-born.jpg" alt="A Star Is Born" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-trek.jpg" style="--r:0.6667" data-i="147"><img src="/images/watcher/star-trek.jpg" alt="Star Trek" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-i-the-phantom-menace.jpg" style="--r:0.6667" data-i="148"><img src="/images/watcher/star-wars-episode-i-the-phantom-menace.jpg" alt="Star Wars: Episode I – The Phantom Menace" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-ii-attack-of-the-clones.jpg" style="--r:0.6702" data-i="149"><img src="/images/watcher/star-wars-episode-ii-attack-of-the-clones.jpg" alt="Star Wars: Episode II – Attack of the Clones" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-iii-revenge-of-the-sith.jpg" style="--r:0.672" data-i="150"><img src="/images/watcher/star-wars-episode-iii-revenge-of-the-sith.jpg" alt="Star Wars: Episode III – Revenge of the Sith" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-iv-a-new-hope.jpg" style="--r:0.6545" data-i="151"><img src="/images/watcher/star-wars-episode-iv-a-new-hope.jpg" alt="Star Wars: Episode IV – A New Hope" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-v-the-empire-strikes-back.jpg" style="--r:0.641" data-i="152"><img src="/images/watcher/star-wars-episode-v-the-empire-strikes-back.jpg" alt="Star Wars: Episode V – The Empire Strikes Back" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-vi-return-of-the-jedi.jpg" style="--r:0.6361" data-i="153"><img src="/images/watcher/star-wars-episode-vi-return-of-the-jedi.jpg" alt="Star Wars: Episode VI – Return of the Jedi" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-vii-the-force-awakens.jpg" style="--r:0.6832" data-i="154"><img src="/images/watcher/star-wars-episode-vii-the-force-awakens.jpg" alt="Star Wars: Episode VII – The Force Awakens" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-viii-the-last-jedi.jpg" style="--r:0.6667" data-i="155"><img src="/images/watcher/star-wars-episode-viii-the-last-jedi.jpg" alt="Star Wars: Episode VIII – The Last Jedi" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/star-wars-episode-ix-the-rise-of-skywalker.jpg" style="--r:0.6667" data-i="156"><img src="/images/watcher/star-wars-episode-ix-the-rise-of-skywalker.jpg" alt="Star Wars: Episode IX – The Rise of Skywalker" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/vengeance.jpg" style="--r:0.6667" data-i="157"><img src="/images/watcher/vengeance.jpg" alt="Vengeance" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/wicked.jpg" style="--r:0.6667" data-i="158"><img src="/images/watcher/wicked.jpg" alt="Wicked" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-wolf-of-wall-street.jpg" style="--r:0.6744" data-i="159"><img src="/images/watcher/the-wolf-of-wall-street.jpg" alt="The Wolf of Wall Street" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/21-jump-street.jpg" style="--r:0.6667" data-i="160"><img src="/images/watcher/21-jump-street.jpg" alt="21 Jump Street" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/180-south.jpg" style="--r:0.6667" data-i="161"><img src="/images/watcher/180-south.jpg" alt="180° South" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/arrested-development.jpg" style="--r:0.6667" data-i="162"><img src="/images/watcher/arrested-development.jpg" alt="Arrested Development" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/arcane.jpg" style="--r:0.6667" data-i="163"><img src="/images/watcher/arcane.jpg" alt="Arcane" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/cowboy-bebop.jpg" style="--r:0.6667" data-i="164"><img src="/images/watcher/cowboy-bebop.jpg" alt="Cowboy Bebop" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/it-s-always-sunny-in-philadelphia.jpg" style="--r:0.6667" data-i="165"><img src="/images/watcher/it-s-always-sunny-in-philadelphia.jpg" alt="It&#x27;s Always Sunny in Philadelphia" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-league.jpg" style="--r:0.6667" data-i="166"><img src="/images/watcher/the-league.jpg" alt="The League" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/landman.jpg" style="--r:0.6667" data-i="167"><img src="/images/watcher/landman.jpg" alt="Landman" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-last-of-us.jpg" style="--r:0.6667" data-i="168"><img src="/images/watcher/the-last-of-us.jpg" alt="The Last of Us" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mad-men.jpg" style="--r:0.6667" data-i="169"><img src="/images/watcher/mad-men.jpg" alt="Mad Men" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/westworld.jpg" style="--r:0.6667" data-i="170"><img src="/images/watcher/westworld.jpg" alt="Westworld" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/rick-and-morty.jpg" style="--r:0.6667" data-i="171"><img src="/images/watcher/rick-and-morty.jpg" alt="Rick and Morty" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-boys.jpg" style="--r:0.6667" data-i="172"><img src="/images/watcher/the-boys.jpg" alt="The Boys" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/fate-stay-night.jpg" style="--r:0.6667" data-i="173"><img src="/images/watcher/fate-stay-night.jpg" alt="Fate/stay night" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/invincible.jpg" style="--r:0.6667" data-i="174"><img src="/images/watcher/invincible.jpg" alt="Invincible" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/baby-driver.jpg" style="--r:0.6667" data-i="175"><img src="/images/watcher/baby-driver.jpg" alt="Baby Driver" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-tomorrow-war.jpg" style="--r:0.6667" data-i="176"><img src="/images/watcher/the-tomorrow-war.jpg" alt="The Tomorrow War" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/tokyo-vice.jpg" style="--r:0.6667" data-i="177"><img src="/images/watcher/tokyo-vice.jpg" alt="Tokyo Vice" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/lazarus.jpg" style="--r:0.6667" data-i="178"><img src="/images/watcher/lazarus.jpg" alt="Lazarus" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-white-lotus.jpg" style="--r:0.6667" data-i="179"><img src="/images/watcher/the-white-lotus.jpg" alt="The White Lotus" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-penguin.jpg" style="--r:0.6667" data-i="180"><img src="/images/watcher/the-penguin.jpg" alt="The Penguin" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/how-to-with-john-wilson.jpg" style="--r:0.6667" data-i="181"><img src="/images/watcher/how-to-with-john-wilson.jpg" alt="How To with John Wilson" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/andor.jpg" style="--r:0.6667" data-i="182"><img src="/images/watcher/andor.jpg" alt="Andor" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/chad-powers.jpg" style="--r:0.6667" data-i="183"><img src="/images/watcher/chad-powers.jpg" alt="Chad Powers" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-amazing-spider-man.jpg" style="--r:0.6739" data-i="184"><img src="/images/watcher/the-amazing-spider-man.jpg" alt="The Amazing Spider-Man" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-amazing-spider-man-2.jpg" style="--r:0.6757" data-i="185"><img src="/images/watcher/the-amazing-spider-man-2.jpg" alt="The Amazing Spider-Man 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/spider-man-homecoming.jpg" style="--r:0.6775" data-i="186"><img src="/images/watcher/spider-man-homecoming.jpg" alt="Spider-Man: Homecoming" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/spider-man-far-from-home.jpg" style="--r:0.6667" data-i="187"><img src="/images/watcher/spider-man-far-from-home.jpg" alt="Spider-Man: Far From Home" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/spider-man-no-way-home.jpg" style="--r:0.6667" data-i="188"><img src="/images/watcher/spider-man-no-way-home.jpg" alt="Spider-Man: No Way Home" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/troll-2.jpg" style="--r:0.7987" data-i="189"><img src="/images/watcher/troll-2.jpg" alt="Troll 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/toy-story-4.jpg" style="--r:0.6748" data-i="190"><img src="/images/watcher/toy-story-4.jpg" alt="Toy Story 4" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/mr-mrs-smith-2005.jpg" style="--r:0.679" data-i="191"><img src="/images/watcher/mr-mrs-smith-2005.jpg" alt="Mr. &amp; Mrs. Smith (2005)" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/is-this-thing-on.jpg" style="--r:0.6667" data-i="192"><img src="/images/watcher/is-this-thing-on.jpg" alt="Is This Thing On?" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-running-man.jpg" style="--r:0.6739" data-i="193"><img src="/images/watcher/the-running-man.jpg" alt="The Running Man" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/watcher/the-rehearsal.jpg" style="--r:0.6667" data-i="194"><img src="/images/watcher/the-rehearsal.jpg" alt="The Rehearsal" loading="lazy" decoding="async"></a>
+</main>
+<dialog id="v" aria-label="Photo viewer">
+  <img id="vi" alt="">
+  <button class="close" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous photo">&lsaquo;</button>
+  <button class="next" aria-label="Next photo">&rsaquo;</button>
+</dialog>
+<script>
+  const links=[...document.querySelectorAll('.ph')], v=document.getElementById('v'), vi=document.getElementById('vi');
+  let i=0;
+  const show=k=>{ i=(k+links.length)%links.length; const img=links[i].querySelector('img'); vi.src=links[i].href; vi.alt=img.alt; };
+  links.forEach((a,k)=>a.addEventListener('click',e=>{ e.preventDefault(); show(k); v.showModal(); }));
+  v.querySelector('.close').onclick=()=>v.close();
+  v.querySelector('.prev').onclick=()=>show(i-1);
+  v.querySelector('.next').onclick=()=>show(i+1);
+  v.addEventListener('click',e=>{ if(e.target===v) v.close(); });
+  document.addEventListener('keydown',e=>{ if(!v.open) return;
+    if(e.key==='ArrowLeft') show(i-1); if(e.key==='ArrowRight') show(i+1); });
+  let x0=null; v.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  v.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40) show(dx<0?i+1:i-1); x0=null; });
+</script>
+</body>
+</html>

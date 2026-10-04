@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>gamer</title>
+<style>
+  :root { --bg:#ffffff; --ink:#000000; --muted:#6b6b6b; --gap:6px; box-sizing:border-box;
+          padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; } }
+  :root[data-theme="dark"] { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; }
+  *, *::before, *::after { box-sizing:inherit; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font-family: Georgia, "Times New Roman", serif; }
+  header { max-width:1400px; margin:0 auto; padding:2.5rem 1rem 1.5rem; }
+  header a { color:var(--muted); text-decoration:none; font-size:.95rem; }
+  header a:hover, header a:focus-visible { color:var(--ink); text-decoration:underline; }
+  h1 { font-weight:normal; font-size:1.6rem; margin:.4rem 0 0; }
+  /* justified rows: each photo keeps its own shape, rows fill the width */
+  .grid { max-width:1400px; margin:0 auto; padding:0 1rem 4rem;
+          display:flex; flex-wrap:wrap; gap:var(--gap); }
+  .grid::after { content:""; flex-grow:999; }
+  .ph { flex-grow:calc(var(--r) * 100); flex-basis:calc(var(--r) * 220px); display:block; }
+  .ph img { display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover; background:#ddd; }
+  .ph:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  @media (max-width:600px) { .ph { flex-basis:calc(var(--r) * 110px); } }
+  /* viewer */
+  dialog { border:0; padding:0; max-width:100vw; max-height:100vh; width:100vw; height:100%;
+           background:rgba(0,0,0,.94); }
+  dialog::backdrop { background:rgba(0,0,0,.94); }
+  dialog img { position:absolute; inset:0; margin:auto; max-width:94vw; max-height:90vh; }
+  dialog button { position:absolute; background:none; border:0; color:#fff; font:inherit;
+                  font-size:1.6rem; padding:1rem; cursor:pointer; opacity:.7; }
+  dialog button:hover, dialog button:focus-visible { opacity:1; }
+  .close { top:env(safe-area-inset-top,0px); right:0; }
+  .prev { left:0; top:50%; transform:translateY(-50%); }
+  .next { right:0; top:50%; transform:translateY(-50%); }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">me in 10 seconds</a>
+  <h1>gamer</h1>
+</header>
+<main class="grid">
+    <a class="ph" href="/images/gamer/yakuza-kiwami-2.jpg" style="--r:0.8361" data-i="0"><img src="/images/gamer/yakuza-kiwami-2.jpg" alt="Yakuza Kiwami 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/arc-raiders.jpg" style="--r:0.7485" data-i="1"><img src="/images/gamer/arc-raiders.jpg" alt="ARC Raiders" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/stellar-blade.jpg" style="--r:0.6667" data-i="2"><img src="/images/gamer/stellar-blade.jpg" alt="Stellar Blade" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/marvel-s-spider-man-2.jpg" style="--r:0.8333" data-i="3"><img src="/images/gamer/marvel-s-spider-man-2.jpg" alt="Marvel&#x27;s Spider-Man 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/fortnite.jpg" style="--r:0.7972" data-i="4"><img src="/images/gamer/fortnite.jpg" alt="Fortnite" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/call-of-duty.jpg" style="--r:0.7003" data-i="5"><img src="/images/gamer/call-of-duty.jpg" alt="Call of Duty" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/ghost-of-yotei.jpg" style="--r:0.7485" data-i="6"><img src="/images/gamer/ghost-of-yotei.jpg" alt="Ghost of Yōtei" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/borderlands-4.jpg" style="--r:0.7485" data-i="7"><img src="/images/gamer/borderlands-4.jpg" alt="Borderlands 4" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/red-dead-redemption-2.jpg" style="--r:0.8117" data-i="8"><img src="/images/gamer/red-dead-redemption-2.jpg" alt="Red Dead Redemption 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/final-fantasy-vii-rebirth.jpg" style="--r:0.7485" data-i="9"><img src="/images/gamer/final-fantasy-vii-rebirth.jpg" alt="Final Fantasy VII Rebirth" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/star-wars-jedi-fallen-order.jpg" style="--r:0.7485" data-i="10"><img src="/images/gamer/star-wars-jedi-fallen-order.jpg" alt="Star Wars Jedi: Fallen Order" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/elden-ring-nightreign.jpg" style="--r:0.6667" data-i="11"><img src="/images/gamer/elden-ring-nightreign.jpg" alt="Elden Ring Nightreign" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/diablo.jpg" style="--r:0.6667" data-i="12"><img src="/images/gamer/diablo.jpg" alt="Diablo" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/uncharted-4-a-thief-s-end.jpg" style="--r:0.7622" data-i="13"><img src="/images/gamer/uncharted-4-a-thief-s-end.jpg" alt="Uncharted 4: A Thief&#x27;s End" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/cyberpunk-2077.jpg" style="--r:0.8503" data-i="14"><img src="/images/gamer/cyberpunk-2077.jpg" alt="Cyberpunk 2077" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/final-fantasy-vii-remake.jpg" style="--r:0.7003" data-i="15"><img src="/images/gamer/final-fantasy-vii-remake.jpg" alt="Final Fantasy VII Remake" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/batman-arkham-knight.jpg" style="--r:0.7812" data-i="16"><img src="/images/gamer/batman-arkham-knight.jpg" alt="Batman: Arkham Knight" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/grand-theft-auto-v.jpg" style="--r:0.8091" data-i="17"><img src="/images/gamer/grand-theft-auto-v.jpg" alt="Grand Theft Auto V" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/sekiro-shadows-die-twice.jpg" style="--r:0.8013" data-i="18"><img src="/images/gamer/sekiro-shadows-die-twice.jpg" alt="Sekiro: Shadows Die Twice" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/nier-automata.jpg" style="--r:0.8361" data-i="19"><img src="/images/gamer/nier-automata.jpg" alt="NieR: Automata" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/undertale.jpg" style="--r:0.6667" data-i="20"><img src="/images/gamer/undertale.jpg" alt="Undertale" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/hades.jpg" style="--r:0.7485" data-i="21"><img src="/images/gamer/hades.jpg" alt="Hades" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/hollow-knight.jpg" style="--r:0.6667" data-i="22"><img src="/images/gamer/hollow-knight.jpg" alt="Hollow Knight" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/stray.jpg" style="--r:0.6667" data-i="23"><img src="/images/gamer/stray.jpg" alt="Stray" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/tiny-bookshop.jpg" style="--r:0.6667" data-i="24"><img src="/images/gamer/tiny-bookshop.jpg" alt="Tiny Bookshop" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/age-of-empires-ii.jpg" style="--r:0.8475" data-i="25"><img src="/images/gamer/age-of-empires-ii.jpg" alt="Age of Empires II" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/007-first-light.jpg" style="--r:0.7485" data-i="26"><img src="/images/gamer/007-first-light.jpg" alt="007 First Light" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/assassin-s-creed-iv-black-flag.jpg" style="--r:0.7645" data-i="27"><img src="/images/gamer/assassin-s-creed-iv-black-flag.jpg" alt="Assassin&#x27;s Creed IV: Black Flag" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/backyard-football-1999.jpg" style="--r:0.6667" data-i="28"><img src="/images/gamer/backyard-football-1999.jpg" alt="Backyard Football 1999" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/backyard-baseball-2001.jpg" style="--r:0.6667" data-i="29"><img src="/images/gamer/backyard-baseball-2001.jpg" alt="Backyard Baseball 2001" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/cuphead.jpg" style="--r:0.8389" data-i="30"><img src="/images/gamer/cuphead.jpg" alt="Cuphead" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/forza-horizon-6.jpg" style="--r:0.7862" data-i="31"><img src="/images/gamer/forza-horizon-6.jpg" alt="Forza Horizon 6" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/katana-zero.jpg" style="--r:0.6667" data-i="32"><img src="/images/gamer/katana-zero.jpg" alt="Katana ZERO" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/nine-sols.jpg" style="--r:0.731" data-i="33"><img src="/images/gamer/nine-sols.jpg" alt="Nine Sols" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/neverness-to-everness.jpg" style="--r:0.75" data-i="34"><img src="/images/gamer/neverness-to-everness.jpg" alt="Neverness to Everness" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/wuthering-waves.jpg" style="--r:0.8032" data-i="35"><img src="/images/gamer/wuthering-waves.jpg" alt="Wuthering Waves" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/rollercoaster-tycoon-2.jpg" style="--r:0.8475" data-i="36"><img src="/images/gamer/rollercoaster-tycoon-2.jpg" alt="RollerCoaster Tycoon 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/nba-street-vol-2.jpg" style="--r:0.7837" data-i="37"><img src="/images/gamer/nba-street-vol-2.jpg" alt="NBA Street Vol. 2" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/nfl-street.jpg" style="--r:0.7862" data-i="38"><img src="/images/gamer/nfl-street.jpg" alt="NFL Street" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/ssx-3.jpg" style="--r:0.7837" data-i="39"><img src="/images/gamer/ssx-3.jpg" alt="SSX 3" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/goldeneye-rogue-agent.jpg" style="--r:0.7862" data-i="40"><img src="/images/gamer/goldeneye-rogue-agent.jpg" alt="GoldenEye: Rogue Agent" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/the-lord-of-the-rings-the-return-of-the-king.jpg" style="--r:0.6667" data-i="41"><img src="/images/gamer/the-lord-of-the-rings-the-return-of-the-king.jpg" alt="The Lord of the Rings: The Return of the King" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/the-lord-of-the-rings-the-two-towers.jpg" style="--r:0.7764" data-i="42"><img src="/images/gamer/the-lord-of-the-rings-the-two-towers.jpg" alt="The Lord of the Rings: The Two Towers" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/super-smash-bros-melee.jpg" style="--r:0.7163" data-i="43"><img src="/images/gamer/super-smash-bros-melee.jpg" alt="Super Smash Bros. Melee" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/the-last-of-us-part-i.jpg" style="--r:0.7911" data-i="44"><img src="/images/gamer/the-last-of-us-part-i.jpg" alt="The Last of Us Part I" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/gamer/the-last-of-us-part-ii.jpg" style="--r:0.7485" data-i="45"><img src="/images/gamer/the-last-of-us-part-ii.jpg" alt="The Last of Us Part II" loading="lazy" decoding="async"></a>
+</main>
+<dialog id="v" aria-label="Photo viewer">
+  <img id="vi" alt="">
+  <button class="close" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous photo">&lsaquo;</button>
+  <button class="next" aria-label="Next photo">&rsaquo;</button>
+</dialog>
+<script>
+  const links=[...document.querySelectorAll('.ph')], v=document.getElementById('v'), vi=document.getElementById('vi');
+  let i=0;
+  const show=k=>{ i=(k+links.length)%links.length; const img=links[i].querySelector('img'); vi.src=links[i].href; vi.alt=img.alt; };
+  links.forEach((a,k)=>a.addEventListener('click',e=>{ e.preventDefault(); show(k); v.showModal(); }));
+  v.querySelector('.close').onclick=()=>v.close();
+  v.querySelector('.prev').onclick=()=>show(i-1);
+  v.querySelector('.next').onclick=()=>show(i+1);
+  v.addEventListener('click',e=>{ if(e.target===v) v.close(); });
+  document.addEventListener('keydown',e=>{ if(!v.open) return;
+    if(e.key==='ArrowLeft') show(i-1); if(e.key==='ArrowRight') show(i+1); });
+  let x0=null; v.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  v.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40) show(dx<0?i+1:i-1); x0=null; });
+</script>
+</body>
+</html>
