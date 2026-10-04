@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>photographer</title>
+<style>
+  :root { --bg:#ffffff; --ink:#000000; --muted:#6b6b6b; --gap:6px; box-sizing:border-box;
+          padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; } }
+  :root[data-theme="dark"] { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; }
+  *, *::before, *::after { box-sizing:inherit; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font-family: Georgia, "Times New Roman", serif; }
+  header { max-width:1400px; margin:0 auto; padding:2.5rem 1rem 1.5rem; }
+  header a { color:var(--muted); text-decoration:none; font-size:.95rem; }
+  header a:hover, header a:focus-visible { color:var(--ink); text-decoration:underline; }
+  h1 { font-weight:normal; font-size:1.6rem; margin:.4rem 0 0; }
+  /* justified rows: each photo keeps its own shape, rows fill the width */
+  .grid { max-width:1400px; margin:0 auto; padding:0 1rem 4rem;
+          display:flex; flex-wrap:wrap; gap:var(--gap); }
+  .grid::after { content:""; flex-grow:999; }
+  .ph { flex-grow:calc(var(--r) * 100); flex-basis:calc(var(--r) * 260px); display:block; }
+  .ph img { display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover; background:#ddd; }
+  .ph:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  @media (max-width:600px) { .ph { flex-basis:calc(var(--r) * 150px); } }
+  /* viewer */
+  dialog { border:0; padding:0; max-width:100vw; max-height:100vh; width:100vw; height:100%;
+           background:rgba(0,0,0,.94); }
+  dialog::backdrop { background:rgba(0,0,0,.94); }
+  dialog img { position:absolute; inset:0; margin:auto; max-width:94vw; max-height:90vh; }
+  dialog button { position:absolute; background:none; border:0; color:#fff; font:inherit;
+                  font-size:1.6rem; padding:1rem; cursor:pointer; opacity:.7; }
+  dialog button:hover, dialog button:focus-visible { opacity:1; }
+  .close { top:env(safe-area-inset-top,0px); right:0; }
+  .prev { left:0; top:50%; transform:translateY(-50%); }
+  .next { right:0; top:50%; transform:translateY(-50%); }
+</style>
+</head>
+<body>
+<header>
+  <a href="/">me in 10 seconds</a>
+  <h1>photographer</h1>
+</header>
+<main class="grid">
+    <a class="ph" href="/images/photographer/01.jpg" style="--r:1.5083" data-i="0"><img src="/images/photographer/01.jpg" alt="Under a bridge, its arches reflected in still water" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/02.jpg" style="--r:1.5083" data-i="1"><img src="/images/photographer/02.jpg" alt="A cook lifting yakisoba noodles off a steaming grill" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/03.jpg" style="--r:1.5083" data-i="2"><img src="/images/photographer/03.jpg" alt="Rowers seen through a bridge arch, downtown towers reflected in the river" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/04.jpg" style="--r:1.5083" data-i="3"><img src="/images/photographer/04.jpg" alt="A crowded spring-fed pool on a summer day" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/05.jpg" style="--r:1.5083" data-i="4"><img src="/images/photographer/05.jpg" alt="The peak of an A-frame church with stained glass" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/06.jpg" style="--r:1.3055" data-i="5"><img src="/images/photographer/06.jpg" alt="Two people fishing off a pier, seen from above" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/07.jpg" style="--r:1.5083" data-i="6"><img src="/images/photographer/07.jpg" alt="A red Corvette under a carport and a blooming crape myrtle" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/08.jpg" style="--r:1.5083" data-i="7"><img src="/images/photographer/08.jpg" alt="A women's basketball game on an outdoor court lined with palms" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/09.jpg" style="--r:0.663" data-i="8"><img src="/images/photographer/09.jpg" alt="A tall cypress at golden hour above a river" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/10.jpg" style="--r:1.5083" data-i="9"><img src="/images/photographer/10.jpg" alt="A summer pool seen out of focus through a chain-link fence" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/11.jpg" style="--r:1.5083" data-i="10"><img src="/images/photographer/11.jpg" alt="Teal and pink graffiti on a freight car" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/12.jpg" style="--r:1.5083" data-i="11"><img src="/images/photographer/12.jpg" alt="Diners at the sidewalk tables of a corner café" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/13.jpg" style="--r:1.5083" data-i="12"><img src="/images/photographer/13.jpg" alt="A cyclist pulling a trailer down a gravel road toward the mountains" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/14.jpg" style="--r:1.5083" data-i="13"><img src="/images/photographer/14.jpg" alt="A bearded man in sunglasses drinking at a sidewalk table" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/15.jpg" style="--r:0.663" data-i="14"><img src="/images/photographer/15.jpg" alt="A red and white radio tower against clouds" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/16.jpg" style="--r:1.3369" data-i="15"><img src="/images/photographer/16.jpg" alt="A beach and an amusement pier under a blue sky" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/17.jpg" style="--r:1.5083" data-i="16"><img src="/images/photographer/17.jpg" alt="Cyclists racing under a highway overpass" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/18.jpg" style="--r:1.5083" data-i="17"><img src="/images/photographer/18.jpg" alt="A man leaning on a pier railing above a busy beach" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/19.jpg" style="--r:1.5083" data-i="18"><img src="/images/photographer/19.jpg" alt="A freight train, graffiti, and downtown towers" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/20.jpg" style="--r:1.5069" data-i="19"><img src="/images/photographer/20.jpg" alt="A two-tone VW van on a dirt road" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/21.jpg" style="--r:1.5083" data-i="20"><img src="/images/photographer/21.jpg" alt="A canal lined with palm trees and houses" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/22.jpg" style="--r:0.9885" data-i="21"><img src="/images/photographer/22.jpg" alt="A blurred cyclist passing under an overpass" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/23.jpg" style="--r:1.5083" data-i="22"><img src="/images/photographer/23.jpg" alt="A city bus beside a parking lot and graffiti-covered buildings" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/24.jpg" style="--r:1.5083" data-i="23"><img src="/images/photographer/24.jpg" alt="A covered boat on a trailer in front of a house" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/25.jpg" style="--r:1.5083" data-i="24"><img src="/images/photographer/25.jpg" alt="A downtown skyline at dusk" loading="lazy" decoding="async"></a>
+    <a class="ph" href="/images/photographer/26.jpg" style="--r:1.5083" data-i="25"><img src="/images/photographer/26.jpg" alt="An arched bridge over a river under big clouds" loading="lazy" decoding="async"></a>
+</main>
+<dialog id="v" aria-label="Photo viewer">
+  <img id="vi" alt="">
+  <button class="close" aria-label="Close">&times;</button>
+  <button class="prev" aria-label="Previous photo">&lsaquo;</button>
+  <button class="next" aria-label="Next photo">&rsaquo;</button>
+</dialog>
+<script>
+  const links=[...document.querySelectorAll('.ph')], v=document.getElementById('v'), vi=document.getElementById('vi');
+  let i=0;
+  const show=k=>{ i=(k+links.length)%links.length; const img=links[i].querySelector('img'); vi.src=links[i].href; vi.alt=img.alt; };
+  links.forEach((a,k)=>a.addEventListener('click',e=>{ e.preventDefault(); show(k); v.showModal(); }));
+  v.querySelector('.close').onclick=()=>v.close();
+  v.querySelector('.prev').onclick=()=>show(i-1);
+  v.querySelector('.next').onclick=()=>show(i+1);
+  v.addEventListener('click',e=>{ if(e.target===v) v.close(); });
+  document.addEventListener('keydown',e=>{ if(!v.open) return;
+    if(e.key==='ArrowLeft') show(i-1); if(e.key==='ArrowRight') show(i+1); });
+  let x0=null; v.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  v.addEventListener('touchend',e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40) show(dx<0?i+1:i-1); x0=null; });
+</script>
+</body>
+</html>
