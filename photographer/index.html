@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>photographer</title>
 <style>
-  :root { --bg:#ffffff; --ink:#000000; --muted:#6b6b6b; --gap:6px; box-sizing:border-box;
+  :root { --bg:#000000; --ink:#B49FE8; --muted:#8E7DC4; color-scheme:dark; --gap:6px; box-sizing:border-box;
           padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; } }
-  :root[data-theme="dark"] { --bg:#000000; --ink:#ffffff; --muted:#9a9a9a; }
   *, *::before, *::after { box-sizing:inherit; }
   body { margin:0; background:var(--bg); color:var(--ink);
          font-family: Georgia, "Times New Roman", serif; }
@@ -21,7 +19,7 @@
           display:flex; flex-wrap:wrap; gap:var(--gap); }
   .grid::after { content:""; flex-grow:999; }
   .ph { flex-grow:calc(var(--r) * 100); flex-basis:calc(var(--r) * 260px); display:block; }
-  .ph img { display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover; background:#ddd; }
+  .ph img { display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover; background:#1a1a1a; }
   .ph:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
   @media (max-width:600px) { .ph { flex-basis:calc(var(--r) * 150px); } }
   /* viewer */
