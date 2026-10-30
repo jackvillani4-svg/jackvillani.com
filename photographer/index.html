@@ -14,14 +14,13 @@
   header a { color:var(--muted); text-decoration:none; font-size:.95rem; }
   header a:hover, header a:focus-visible { color:var(--ink); text-decoration:underline; }
   h1 { font-weight:normal; font-size:1.6rem; margin:.4rem 0 0; }
-  /* justified rows: each photo keeps its own shape, rows fill the width */
+  /* uniform grid: every photo the same size */
   .grid { max-width:1400px; margin:0 auto; padding:0 1rem 4rem;
-          display:flex; flex-wrap:wrap; gap:var(--gap); }
-  .grid::after { content:""; flex-grow:999; }
-  .ph { flex-grow:calc(var(--r) * 100); flex-basis:calc(var(--r) * 260px); display:block; }
-  .ph img { display:block; width:100%; height:auto; aspect-ratio:var(--r); object-fit:cover; background:#1a1a1a; }
+          display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:var(--gap); }
+  .ph { display:block; }
+  .ph img { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; background:#1a1a1a; }
   .ph:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
-  @media (max-width:600px) { .ph { flex-basis:calc(var(--r) * 150px); } }
+  @media (max-width:600px) { .grid { grid-template-columns:repeat(2, 1fr); } }
   /* viewer */
   dialog { border:0; padding:0; max-width:100vw; max-height:100vh; width:100vw; height:100%;
            background:rgba(0,0,0,.94); }
@@ -75,9 +74,6 @@
     <a class="ph" href="/images/photographer/32.jpg" style="--r:1.5" data-i="31"><img src="/images/photographer/32.jpg" alt="An ALTO stop sign tucked among banana leaves" loading="lazy" decoding="async"></a>
     <a class="ph" href="/images/photographer/33.jpg" style="--r:1.5015" data-i="32"><img src="/images/photographer/33.jpg" alt="A pink and white Volkswagen Beetle parked by a café" loading="lazy" decoding="async"></a>
     <a class="ph" href="/images/photographer/34.jpg" style="--r:1.5" data-i="33"><img src="/images/photographer/34.jpg" alt="A curly poodle stepping out of a pink doorway" loading="lazy" decoding="async"></a>
-    <a class="ph" href="/images/photographer/35.jpg" style="--r:1.4981" data-i="34"><img src="/images/photographer/35.jpg" alt="A man sunbathing at the edge of a spring-fed pool" loading="lazy" decoding="async"></a>
-    <a class="ph" href="/images/photographer/36.jpg" style="--r:0.75" data-i="35"><img src="/images/photographer/36.jpg" alt="Spider-Man with his arms crossed in a convention crowd" loading="lazy" decoding="async"></a>
-    <a class="ph" href="/images/photographer/37.jpg" style="--r:0.7495" data-i="36"><img src="/images/photographer/37.jpg" alt="A paper lantern glowing in the dark" loading="lazy" decoding="async"></a>
     <a class="ph" href="/images/photographer/38.jpg" style="--r:1.4493" data-i="37"><img src="/images/photographer/38.jpg" alt="The red neon Forbidden Fruit sign reflected on parked cars" loading="lazy" decoding="async"></a>
     <a class="ph" href="/images/photographer/39.jpg" style="--r:1.5083" data-i="38"><img src="/images/photographer/39.jpg" alt="A giant manga billboard above a traffic light on Pico Boulevard" loading="lazy" decoding="async"></a>
 </main>
