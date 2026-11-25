@@ -18,9 +18,12 @@
   .grid { max-width:1400px; margin:0 auto; padding:0 1rem 4rem;
           display:grid; grid-template-columns:repeat(auto-fill, 110px); gap:var(--gap); }
   .grid { grid-auto-rows:165px; }
-  .grid > img { display:block; width:110px; min-width:110px; max-width:110px;
+  .grid > img, .grid > .poster-crop { display:block; width:110px; min-width:110px; max-width:110px;
                 height:165px; min-height:165px; max-height:165px;
                 aspect-ratio:2 / 3; object-fit:cover; background:#1a1a1a; }
+  /* The GTA VI source has dark trim baked into the artwork. Clip it inside the same tile. */
+  .poster-crop { overflow:hidden; }
+  .poster-crop > img { display:block; width:100%; height:100%; object-fit:cover; transform:scale(1.05); }
 </style>
 </head>
 <body>
@@ -76,7 +79,9 @@
     <img src="/images/gamer/the-last-of-us-part-i.jpg" alt="The Last of Us Part I" width="110" height="165" loading="lazy" decoding="async">
     <img src="/images/gamer/the-last-of-us-part-ii.jpg" alt="The Last of Us Part II" width="110" height="165" loading="lazy" decoding="async">
     <img src="https://upload.wikimedia.org/wikipedia/en/2/2d/Big_Walk_cover_art.jpeg" alt="Big Walk" width="110" height="165" loading="lazy" decoding="async">
-    <img src="/images/gamer/grand-theft-auto-vi.png" alt="Grand Theft Auto VI" width="110" height="165" loading="lazy" decoding="async">
+    <div class="poster-crop">
+      <img src="/images/gamer/grand-theft-auto-vi.png" alt="Grand Theft Auto VI" width="110" height="165" loading="lazy" decoding="async">
+    </div>
 </main>
 </body>
 </html>
